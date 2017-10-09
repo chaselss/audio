@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>播放器</title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="css/index.css"/>
+	<script type="text/html" id="song_temp">
+			<% for(var i=0;i<data.length;i++){%>
+				<% var miao = data[i].playtime%60;var fen = parseInt(data[i].playtime/60);%>
+				<% miao<10?miao='0'+miao:'';var time ="0"+fen+" : "+miao;%>
+				<tr width="100%" id = '<%=data[i].id%>' 
+					    class = "<%=data[i].albumId%>">
+					<td width="5%" align="left"><%=i+1%></td>
+					<td width="10%" align="left"><i class="iconfont">&#xe613;</i></td>
+					<td width="35%" align="left"><%=data[i].songName%></td>
+					<td width="10%" align="left"><%=data[i].singerName%></td>
+					<td width="25%" align="left"><%=data[i].albumName%></td>
+					<td width="10%" align="left"><%=time%></td>
+				</tr>
+			<%}%>
+	</script>
+	<body>
+		<div class="audiobox">
+			<div class="audio_top">
+				<div class="left">
+					<div class="disc_box">
+						<img class="disc paly" src="images/cdbg.png"/>
+						<div class="album_img"> </div>
+						<img class="disc_head disc_head_play" src="images/cd_tou.png"/>
+					</div>
+				</div>
+				<div class="right">
+					<p class="name"></p>
+					<p class="describe"></p>
+					<div class="control_icon">
+						<div class="left">
+							<i class="iconfont" id = "pre">&#xe62f;</i>
+							<i class="iconfont" id = "paly">&#xe62d;</i>
+							<i class="iconfont" id = "next">&#xe632;</i>
+						</div>
+						<div class="right">
+							<i class="iconfont" id = "random">&#xe634;</i>
+							<i class="iconfont" id = "refesh">&#xe8e9;</i>
+							<i class="iconfont" id = "voc">&#xe637;</i>
+							<span class="voc_fa"><span class="voc_son"></span></span>
+						</div>
+					</div>
+					<audio src="http://ws.stream.qqmusic.qq.com/101369814.m4a?fromtag=46" id="media" autoplay="autoplay"></audio>
+					<div id="progress_box">
+						<div id="progress">
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="audio_bottom">
+				<table cellspacing="0" cellpadding="0" width="100%" height="100%">
+					<colgroup span="1" width="5%" align="left"></colgroup>
+					<colgroup span="1" width="10%" align="left"></colgroup>
+					<colgroup span="1" width="35%" align="left"></colgroup>
+					<colgroup span="1" width="10%" align="left"></colgroup>
+					<colgroup span="1" width="25%" align="left"></colgroup>
+					<colgroup span="1" width="10%" align="left"></colgroup>
+					<thead>
+						<tr class="th_box">
+							<th width="5%" align="left"></th>
+							<th width="10%" align="left">操作</th>
+							<th width="35%" align="left">音乐标题</th>
+							<th width="10%" align="left">歌手</th>
+							<th width="25%" align="left">专辑</th>
+							<th width="10%" align="left">时长</th>
+						</tr>
+					</thead>
+					<tbody>
+						
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</body>
+	<script>
+		window.onresize = function () {
+			var disc_box = document.getElementsByClassName('disc_box')[0];
+			disc_box.style.height = disc_box.offsetWidth+'px';
+		}
+	</script>
+	<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/tempengine.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/audio.js" type="text/javascript" charset="utf-8"></script>
+</html>
